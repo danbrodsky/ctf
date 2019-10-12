@@ -1,0 +1,27 @@
+We start with:
+- a sample dataset (of images in this case)
+- a chosen bias (usually 1)
+
+Steps:
+- randomize a weight vector W
+- extract features from image (break into smaller 2D matrices)
+- clean image of each possible classification fed into model
+- input is passed into first hidden layer
+- each hidden layer consists of w neurons, each using the equation:
+f(X) = W.X + bw*b (X is feature vector, b is bias, bw is bias weight for this neuron)
+- result from each neuron passed to activation (sigmoid) function to normalize result in [-1,1]
+- result from hidden layer passed to next hidden layer, which has its own weights
+- eventually result is passed to output layer, which aggregates neuron from previous layer into desired output size
+- results are added as expected results for classifications
+- labeled training set is input into model
+- mean squared-error is calculated using sum of squared difference between training data result and expected
+- equation for loss function has derivative (gradient) calculated with respect to each weight individually
+- gradient is pushed in direction that minimizes MSE by changing the weight
+- above is repeated (gradient descent) until training data classified correctly
+
+
+Adversarial example:
+- pass in an image, receive output result and classification
+- compute gradient of loss function with respect to input layer features
+- modify input layer features to push toward desired output
+
