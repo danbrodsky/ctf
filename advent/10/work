@@ -1,0 +1,119 @@
+mm0 = a
+xmm1 = b
+xmm2 = c
+xmm3 = d
+constants:
+xmm9
+xmm10
+xmm13
+xmm15
+xmm6 = (xmm6 * xmm3) % 2^32
+xmm8
+xmm11
+xmm14
+xmm5
+xmm3 = xmm3 * xmm0 + xmm5 + xmm12
+xmm2 = xmm2 + xmm6 + xmm5
+xmm5
+xmm7
+xmm4
+xmm6
+constant:
+xmm13
+/* xmm1 = (xmm1 * xmm0) + (xmm5 * xmm1) + xmm7 */
+/* xmm5 = shuffle(xmm13, 0xaa) */
+/* xmm7 = shuffle(xmm13, 0x55) * xmm2 + xmm11 */
+/* xmm2 = shuffle(xmm10, 0xff) * xmm0 + xmm6 + xmm5 */
+/* xmm11 */
+xmm3 = shuffle(xmm9, 0xff) * xmm0 + xmm5 + xmm12 
+xmm3_s = (( gt(xmm6_n, xmm3) + xmm5_n ) * xmm4_n )
+xmm0 = C
+xmm5 = shuffle(xmm9, 0xaa) * xmm1
+xmm1 = C
+xmm12 = shuffle(xmm9, 0x55) * xmm2 + xmm6
+xmm6 = shuffle(xmm9, 0x0) * xmm3_o
+xmm6_n = C
+xmm5_n = C
+xmm4_n = C
+
+loc_4005A0:
+sfence
+movdqa  xmm9, cs:data
+pshufd  xmm6, xmm9, 0
+pmulld  xmm6, xmm3 # multiple stores only lower 32 bits
+pshufd  xmm12, xmm9, 55h ; 'U'
+pmulld  xmm12, xmm2
+paddd   xmm12, xmm6
+movdqa  xmm10, cs:xmmword_601050
+pshufd  xmm8, xmm10, 0
+pmulld  xmm8, xmm3
+movdqa  xmm13, cs:xmmword_601060
+pshufd  xmm11, xmm13, 0
+pmulld  xmm11, xmm3
+movdqa  xmm15, cs:xmmword_601070
+pshufd  xmm14, xmm15, 0
+pmulld  xmm14, xmm3
+pshufd  xmm5, xmm9, 0AAh
+pmulld  xmm5, xmm1
+pshufd  xmm3, xmm9, 0FFh
+pmulld  xmm3, xmm0
+paddd   xmm3, xmm5
+paddd   xmm3, xmm12
+pshufd  xmm5, xmm10, 55h ; 'U'
+pmulld  xmm5, xmm2
+paddd   xmm5, xmm8
+pshufd  xmm7, xmm13, 55h ; 'U'
+pmulld  xmm7, xmm2
+pshufd  xmm4, xmm15, 55h ; 'U'
+pmulld  xmm4, xmm2
+pshufd  xmm6, xmm10, 0AAh
+pmulld  xmm6, xmm1
+pshufd  xmm2, xmm10, 0FFh
+pmulld  xmm2, xmm0
+paddd   xmm2, xmm6
+paddd   xmm2, xmm5
+paddd   xmm7, xmm11
+pshufd  xmm5, xmm13, 0AAh
+pmulld  xmm5, xmm1
+pshufd  xmm6, xmm15, 0AAh
+pmulld  xmm6, xmm1
+pshufd  xmm1, xmm13, 0FFh
+pmulld  xmm1, xmm0
+paddd   xmm1, xmm5
+paddd   xmm1, xmm7
+paddd   xmm4, xmm14
+pshufd  xmm7, xmm15, 0FFh
+pmulld  xmm7, xmm0
+paddd   xmm7, xmm6
+paddd   xmm7, xmm4
+
+movdqa  xmm0, cs:xmmword_601080
+pshufd  xmm4, xmm0, 0AAh # 0096433d repeating
+pshufd  xmm5, xmm0, 0 # 0x00000001 repeating
+mov     edx, 3E8h
+movdqa  xmm0, xmm7
+
+loc_4006D0:
+movdqa  xmm6, xmm4
+pcmpgtd xmm6, xmm3 # xmm3 is 1 less consecutively (4321..)
+# pcmpgtd changes to either 0x11111111 or 0x00000000 if dest 4 byte is greater or less than src
+paddd   xmm6, xmm5 # adds 1 to 4 byte value (dst is now 4 byte value only)
+pmulld  xmm6, xmm4
+psubd   xmm3, xmm6
+movdqa  xmm6, xmm4
+pcmpgtd xmm6, xmm2
+paddd   xmm6, xmm5
+pmulld  xmm6, xmm4
+psubd   xmm2, xmm6
+movdqa  xmm6, xmm4
+pcmpgtd xmm6, xmm1
+paddd   xmm6, xmm5
+pmulld  xmm6, xmm4
+psubd   xmm1, xmm6
+movdqa  xmm6, xmm4
+pcmpgtd xmm6, xmm0
+paddd   xmm6, xmm5
+pmulld  xmm6, xmm4
+psubd   xmm0, xmm6
+add     edx, 0FFFFFFFFh
+jnz     short loc_4006D0

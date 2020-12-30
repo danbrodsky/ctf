@@ -1,0 +1,77 @@
+#!/home/esc/python2env/bin/python2.7
+
+from pwn import *
+import sys
+from threading import Thread
+import time
+import re
+from binascii import unhexlify
+
+# class PausableThread(threading.Thread):
+
+#     def __init__(self, group=None, target=None, name=None, args=(), kwargs={}):
+#         self._event = threading.Event()
+#         if target:
+#             args = ((lambda: self._event.wait()),) + args
+#         super(PausableThread, self).__init__(group, target, name, args, kwargs)
+
+#     def pause(self):
+#         self._event.clear()
+
+#     def resume(self):
+#         self._event.set()
+
+def write(cmd):
+    p.send_raw(cmd)
+    return p.recvuntil("gef\xe2")
+
+def read():
+    while True:
+        print p.recv()
+
+def flush():
+    print p.recv()
+
+def gdb_ret(cmd):
+    out = write(cmd)
+    return re.search("uint128 = (.*)\n", out).group(1)
+
+p = process(argv=['gdb']+sys.argv[1:])
+# t = Thread(target=read, args=(), kwargs={})
+# t._event = threading.Event()
+# pt = PausableThread(t)
+
+# t.daemon = True
+# t.start()
+
+write("b *0x400730\n") # break on complete loop
+write("r\n")
+p.recvuntil("gef\xe2")
+
+
+seen = {}
+
+while True:
+    v4 = hex(int(gdb_ret("info registers xmm3\n"), 16))[2:].rjust(32,'0')
+    v5 = hex(int(gdb_ret("info registers xmm2\n"), 16))[2:].rjust(32,'0')
+    v6 = hex(int(gdb_ret("info registers xmm1\n"), 16))[2:].rjust(32,'0')
+    v7 = hex(int(gdb_ret("info registers xmm0\n"), 16))[2:].rjust(32,'0')
+
+    # print v4
+
+    curr = bytearray(v4.strip().decode('hex') + v5.strip().decode('hex') + v6.strip().decode('hex') + v7.strip().decode('hex'))
+
+    flag = bytearray("FC14EB09BCAEE7474FE37CC152A5028E8971C88D9623016D71405AEAFD461D23".decode("hex)"))
+    for j in range(0,32,2):
+        flag[j] ^= curr[2*j]
+        flag[j+1] ^= curr[2*j+1]
+
+    dflag = str(flag)
+    # print(dflag)
+    if dflag not in seen.keys():
+        seen[dflag] = 1
+    else:
+        seen[dflag] += 1
+        print "flag seen twice: " + dflag
+    write("c\n")
+
