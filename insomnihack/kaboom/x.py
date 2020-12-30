@@ -1,0 +1,14 @@
+#!/usr/bin/env python3
+
+key = [0x42, 0x63, 0xB4, 0xE1, 0x4C, 0xBA, 0x1B, 0x83, 0xD7, 0xFD, 0x77, 0xE3, 0x33]
+
+c = 0x42
+ans = ""
+
+for i in range(len(key) - 1):
+    a = key[i + 1] - key[i]
+    if a < 0:
+        a = (0x100 + key[i + 1]) - key[i]
+    ans = chr(a) + ans
+
+print(ans)
