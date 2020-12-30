@@ -1,0 +1,7 @@
+#+TITLE: Writeup Notes
+
+- binary is for AmigaOS 3.x
+- motorola m68k CPU (32-bit BE)
+- https://github.com/cnvogelg/amitools to get hunktools segments and disassembly
+- file format is https://en.wikipedia.org/wiki/Amiga_Hunk
+- https://github.com/lab313ru/ghidra_amiga_ldr loads hunks into ghidra
