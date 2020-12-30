@@ -1,0 +1,103 @@
+  value_map       dq offset a5370616365   ; DATA XREF: get_string+2F↑o
+.data:00000000000070E0                                             ; "5370616365"
+.data:00000000000070E8                     dq offset a4578636c616d61 ; "4578636c616d6174696f6e"
+.data:00000000000070F0                     dq offset a446f75626c655f ; "446f75626c655f51756f7465"
+.data:00000000000070F8                     dq offset a48617368     ; "48617368"
+.data:0000000000007100                     dq offset a446f6c6c61725f ; "446f6c6c61725f5369676e"
+.data:0000000000007108                     dq offset a50657263656e74 ; "50657263656e74"
+.data:0000000000007110                     dq offset a416d7065727361 ; "416d70657273616e64"
+.data:0000000000007118                     dq offset a53696e676c655f ; "53696e676c655f51756f7465"
+.data:0000000000007120                     dq offset a4c6566745f5061 ; "4c6566745f506172656e746865736973"
+.data:0000000000007128                     dq offset a52696768745f50 ; "52696768745f506172656e746865736973"
+.data:0000000000007130                     dq offset a41737465726973 ; "417374657269736b"
+.data:0000000000007138                     dw offset a506c7573     ; "506c7573"
+.data:000000000000713A                     db    0
+.data:000000000000713B                     db    0
+.data:000000000000713C                     db    0
+.data:000000000000713D                     db    0
+.data:000000000000713E                     db    0
+.data:000000000000713F                     db    0
+.data:0000000000007140                     dq offset a436f6d6d61   ; "436f6d6d61"
+.data:0000000000007148                     dq offset a4d696e7573   ; "4d696e7573"
+.data:0000000000007150                     dq offset a46756c6c5f5374 ; "46756c6c5f53746f70"
+.data:0000000000007158                     dq offset a536c617368   ; "536c617368"
+.data:0000000000007160                     dq offset unk_4CB9
+.data:0000000000007168     zero_probably   dq offset unk_4CB9      ; DATA XREF: get_string+19↑r
+.data:0000000000007170                     dq offset unk_4CB9
+.data:0000000000007178                     dq offset unk_4CB9
+.data:0000000000007180                     dq offset unk_4CB9
+.data:0000000000007188                     dq offset unk_4CB9
+.data:0000000000007190                     dq offset unk_4CB9
+.data:0000000000007198                     dq offset unk_4CB9
+.data:00000000000071A0                     dq offset unk_4CB9
+.data:00000000000071A8                     dq offset unk_4CB9
+.data:00000000000071B0                     dq offset a436f6c6f6e   ; "436f6c6f6e"
+.data:00000000000071B8                     dq offset a53656d69636f6c ; "53656d69636f6c6f6e"
+.data:00000000000071C0                     dq offset a4c657373207468 ; "4c657373207468616e"
+.data:00000000000071C8                     dq offset a457175616c5f53 ; "457175616c5f5369676e"
+.data:00000000000071D0                     dq offset a47726561746572 ; "477265617465725f5468616e"
+.data:00000000000071D8                     dq offset a5175657374696f ; "5175657374696f6e5f4d61726b"
+.data:00000000000071E0                     dq offset a41745f5369676e ; "41745f5369676e"
+.data:00000000000071E8                     dq offset unk_4CB9
+.data:00000000000071F0                     dq offset unk_4CB9
+.data:00000000000071F8                     dq offset unk_4CB9
+.data:0000000000007200                     dq offset unk_4CB9
+.data:0000000000007208                     dq offset unk_4CB9
+.data:0000000000007210                     dq offset unk_4CB9
+.data:0000000000007218                     dq offset unk_4CB9
+.data:0000000000007220                     dq offset unk_4CB9
+.data:0000000000007228                     dq offset unk_4CB9
+.data:0000000000007230                     dq offset unk_4CB9
+.data:0000000000007238                     dq offset unk_4CB9
+.data:0000000000007240                     dq offset unk_4CB9
+.data:0000000000007248                     dq offset unk_4CB9
+.data:0000000000007250                     dq offset unk_4CB9
+.data:0000000000007258                     dq offset unk_4CB9
+.data:0000000000007260                     dq offset unk_4CB9
+.data:0000000000007268                     dq offset unk_4CB9
+.data:0000000000007270                     dq offset unk_4CB9
+.data:0000000000007278                     dq offset unk_4CB9
+.data:0000000000007280                     dq offset unk_4CB9
+.data:0000000000007288                     dq offset unk_4CB9
+.data:0000000000007290                     dq offset unk_4CB9
+.data:0000000000007298                     dq offset unk_4CB9
+.data:00000000000072A0                     dq offset unk_4CB9
+.data:00000000000072A8                     dq offset unk_4CB9
+.data:00000000000072B0                     dq offset unk_4CB9
+.data:00000000000072B8                     dq offset a4c6566745f4272 ; "4c6566745f427261636b6574"
+.data:00000000000072C0                     dq offset a4261636b736c61 ; "4261636b736c617368"
+.data:00000000000072C8                     dq offset a52696768745f42 ; "52696768745f427261636b6574"
+.data:00000000000072D0                     dq offset a4361726574   ; "4361726574"
+.data:00000000000072D8                     dq offset a556e6465727363 ; "556e64657273636f7265"
+.data:00000000000072E0                     dq offset a47726176655f41 ; "47726176655f416363656e74"
+.data:00000000000072E8                     dq offset unk_4CB9
+.data:00000000000072F0                     dq offset unk_4CB9
+.data:00000000000072F8                     dq offset unk_4CB9
+.data:0000000000007300                     dq offset unk_4CB9
+.data:0000000000007308                     dq offset unk_4CB9
+.data:0000000000007310                     dq offset unk_4CB9
+.data:0000000000007318                     dq offset unk_4CB9
+.data:0000000000007320                     dq offset unk_4CB9
+.data:0000000000007328                     dq offset unk_4CB9
+.data:0000000000007330                     dq offset unk_4CB9
+.data:0000000000007338                     dq offset unk_4CB9
+.data:0000000000007340                     dq offset unk_4CB9
+.data:0000000000007348                     dq offset unk_4CB9
+.data:0000000000007350                     dq offset unk_4CB9
+.data:0000000000007358                     dq offset unk_4CB9
+.data:0000000000007360                     dq offset unk_4CB9
+.data:0000000000007368                     dq offset unk_4CB9
+.data:0000000000007370                     dq offset unk_4CB9
+.data:0000000000007378                     dq offset unk_4CB9
+.data:0000000000007380                     dq offset unk_4CB9
+.data:0000000000007388                     dq offset unk_4CB9
+.data:0000000000007390                     dq offset unk_4CB9
+.data:0000000000007398                     dq offset unk_4CB9
+.data:00000000000073A0                     dq offset unk_4CB9
+.data:00000000000073A8                     dq offset unk_4CB9
+.data:00000000000073B0                     dq offset unk_4CB9
+.data:00000000000073B8                     dq offset a4c6566745f4272_0 ; "4c6566745f4272616365"
+.data:00000000000073C0                     dq offset a56657274696361 ; "566572746963616c5f426172"
+.data:00000000000073C8                     dq offset a52696768745f42_0 ; "52696768745f4272616365"
+.data:00000000000073D0                     dq offset a54696c6465   ; "54696c6465"
+.data:00000000000073D0     _data           ends
