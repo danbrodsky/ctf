@@ -1,0 +1,45 @@
+MODE 5
+MOVE 50,50 // TODO
+
+// blocks are stored from bits [6:0]
+A$ = "?\x11=\x0f(* \x1d54-\x0b(.\x1d=5\r(# ?\x15=\x07 \x00\x00\x0b3\x1d;#\x14%\x04)<\x04\x13:3\x12?\x0e\x03 1*?=5\n\x08!8\x1d\t\x07/+21\x1d1.\r(\x0c\x05?\x1d\n"
+/* loop until no chars in A$ */
+// 63 characters if 7 bits, 74 if 6 bits
+i = 0
+WHILE i < 74
+	C% = ASC(MID$(A$,i))
+	
+	N = 1
+  WHILE N < 7
+		D% = I*7+N
+		N = N+1
+		IF C% MOD 2 = 1
+      // draw here
+      PLOT 81,50,-50
+      PLOT 81,0,50
+		ELSE
+			MOVE 75*D% MOD 21, 50*D%/21
+			PLOT 0,0,50
+    END
+		C% = C% / 2
+    // i*7 + n is current block
+    IF I*7 + N MOD 21 = 0
+      MOVE 50, 50*(I*7+N/21)
+      PLOT 0,0,50 				// Relative move(0,50)
+			// TODO move to left side and up 1 row
+		// ELSE // don't need since it moves to last point anyways
+    	// TODO: move right
+    END
+	ENDWHILE
+  I = I + 1
+ENDWHILE
+
+DEF PROC_p
+MOVE 592,462				// Absolute move
+plot 0,0,50 				// relative move(0,50)
+plot 81,50,-50
+plot 81,0,50
+ENDPROC
+
+// one line version
+

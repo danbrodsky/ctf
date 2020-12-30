@@ -1,0 +1,5 @@
+# bsc -systemc -cpp -Xcpp -DLICENSE_KEY=0000 Tb.bs
+bsc -verilog -e mkTb -o tb
+Verilog binary file created: tb
+./tb
+i~œôjG4ˆh6i-ğß¼BOµ
