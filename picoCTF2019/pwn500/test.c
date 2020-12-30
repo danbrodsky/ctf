@@ -18,11 +18,11 @@ typedef struct unallocated_chunk_s {
     void* data; // data of this chunk (some overwritten by fd and bk)
 };
 
-typedef union chunk_u chunk;
-union chunk_u {
-    allocated_chunk ac;
-    unallocated_chunk uc;
-};
+/* typedef union chunk_u chunk; */
+/* union chunk_u { */
+/*     allocated_chunk ac; */
+/*     unallocated_chunk uc; */
+/* }; */
 
 int main() {
 
@@ -41,6 +41,7 @@ int main() {
     char* a = malloc(0x110);
     char* b = malloc(0x110);
     void* c = malloc(0x110);
+    __asm__("int3");
 
     // fill up our tcache so it stays the fuck out of our way
     free(trash1);
@@ -50,10 +51,10 @@ int main() {
     free(trash5);
     free(trash6);
     free(trash7);
-
-    // b is freed, c.prev_inuse bit set to 0 and c.prev_size set to 0x120
-    free(b);
     __asm__("int3");
+
+/*     // b is freed, c.prev_inuse bit set to 0 and c.prev_size set to 0x120 */
+    free(b);
 
     // overwrite the last byte in b.size to 0, b is now 0x100
     // c.prev_size does not change since &b + (b.size) != &c
@@ -67,30 +68,33 @@ int main() {
     b[0xf8] = 0x20; // size fake chunk
     __asm__("int3");
     
-    // small chunk allocated at starting b position (size 0x90)
+/*     // small chunk allocated at starting b position (size 0x90) */
     void* b1 = malloc(0x80);
-    // chunk b split into 0x90 small chunk and 0x70 chunk in unsorted bin (along with fake chunk)
+    __asm__("int3");
+/*     // chunk b split into 0x90 small chunk and 0x70 chunk in unsorted bin (along with fake chunk) */
     void* b2 = malloc(0x60); // 0x70 chunk from unsorted bin used as space here
+    __asm__("int3");
     
     free(b1); // b1 freed to set fd and bk pointers
-    // when c is freed glibc checks c.prev_in_use
-    // if true then it checks c->fd->bk == c as sec check
-    // then c and prev_chunk (b1) are coalesced
-    __asm__("int3");
+/*     // when c is freed glibc checks c.prev_in_use */
+/*     // if true then it checks c->fd->bk == c as sec check */
+/*     // then c and prev_chunk (b1) are coalesced */
+/*     __asm__("int3"); */
     free(c);
 
-    // since c thinks b is size 0x120 due to c.prev_size, all memory from b to c is freed
-    // b2 was not freed yet and is now still writeable while in a free chunk
+    __asm__("int3");
+/*     // since c thinks b is size 0x120 due to c.prev_size, all memory from b to c is freed */
+/*     // b2 was not freed yet and is now still writeable while in a free chunk */
     
-    __asm__("int3");
-    void* padding = malloc(0x90); // the next portion of free memory will be b2
-    __asm__("int3");
+/*     __asm__("int3"); */
+/*     void* padding = malloc(0x90); // the next portion of free memory will be b2 */
+/*     __asm__("int3"); */
 
-    // we now have an allocated chunk in 
-    // 
+/*     // we now have an allocated chunk in  */
+/*     //  */
 
 
-    // fast bin allocated after b1
+/*     // fast bin allocated after b1 */
     
 
 

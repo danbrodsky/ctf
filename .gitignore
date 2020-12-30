@@ -1,0 +1,17 @@
+tests/**
+snippets/**
+!/.gitignore
+node_modules/
+TODO/
+*.pyc
+*.pub
+*.i64
+*.idb
+*.cfg
+core.*
+*.lock
+*.crt
+*.id1
+*.id0
+
+
