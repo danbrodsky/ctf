@@ -1,0 +1,10 @@
+64925 brk(NULL) = 0x00031000
+64925 brk(0x00031c70) = 0x00031c70
+64925 brk(0x00032d40) = 0x00032d40
+64925 ioctl(0,0x40245408,0xffffdcbc) = 0
+64925 ioctl(1,0x40245408,0xffffdcbc) = 0
+64925 write(1,0x1c6be,2) = 2
+64925 write(1,0xffffdb1f,8) = 8
+64925 write(1,0x1c682,1) = 1
+64925 read(0,0xffffdce8,512) = -1 errno=4 (Interrupted system call)
+--- SIGINT {si_signo=SIGINT, si_code=SI_KERNEL, si_pid=0, si_uid=0} ---

@@ -1,0 +1,11 @@
+71654 brk(NULL) = 0x00031000
+71654 brk(0x00031c70) = 0x00031c70
+71654 brk(0x00032d40) = 0x00032d40
+71654 ioctl(0,0x40245408,0xffffdcac) = -1 errno=25 (Inappropriate ioctl for device)
+71654 ioctl(1,0x40245408,0xffffdcac) = 0
+71654 write(1,0x1c6be,2) = 2
+71654 write(1,0xffffdb0f,8) = 8
+71654 write(1,0x1c682,1) = 1
+71654 read(0,0xffffdcd8,512) = 363
+71654 read(0,0xffffdcd8,512) = 1
+--- SIGSEGV {si_signo=SIGSEGV, si_code=1, si_addr=0xd023c030} ---
