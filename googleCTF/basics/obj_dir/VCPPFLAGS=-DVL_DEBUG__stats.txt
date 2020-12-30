@@ -1,0 +1,85 @@
+Verilator Statistics Report
+
+Information:
+  Verilator 4.036 2020-06-06 rev v4.034-208-g04c0fc8aa
+  Arguments: -Wall --cc -I CPPFLAGS=-DVL_DEBUG --debug check.sv --exe --build main.cpp
+
+Global Statistics:
+
+
+Performance Statistics:
+
+
+Stage Statistics:
+  Stat                                       Final      Final_Fast
+  --------                                   -------    -------  
+
+  Instruction count, TOTAL                        78          0
+  Instruction count, fast critical                 0          0
+
+  Node count, ADD                                  1
+  Node count, ALWAYS                               1
+  Node count, ASSIGNDLY                            2
+  Node count, ASSIGNW                              3
+  Node count, BASICDTYPE                          17
+  Node count, BEGIN                                1
+  Node count, CONCAT                              10
+  Node count, CONST                               37
+  Node count, EQ                                   1
+  Node count, MODULE                               1
+  Node count, NETLIST                              1
+  Node count, PARSEREF                            20
+  Node count, PORT                                 3
+  Node count, RANGE                                6
+  Node count, REPLICATE                            6
+  Node count, SELBIT                               9
+  Node count, SELEXTRACT                           4
+  Node count, SENITEM                              1
+  Node count, SENTREE                              1
+  Node count, TYPETABLE                            1
+  Node count, UNPACKARRAYDTYPE                     1
+  Node count, VAR                                  7
+  Node count, VARREF                               2
+
+  Node pairs, ADD_CONST                            1
+  Node pairs, ADD_PARSEREF                         1
+  Node pairs, ALWAYS_BEGIN                         1
+  Node pairs, ALWAYS_SENTREE                       1
+  Node pairs, ASSIGNDLY_ADD                        1
+  Node pairs, ASSIGNDLY_PARSEREF                   2
+  Node pairs, ASSIGNDLY_SELBIT                     1
+  Node pairs, ASSIGNW_EQ                           1
+  Node pairs, ASSIGNW_PARSEREF                     1
+  Node pairs, ASSIGNW_REPLICATE                    2
+  Node pairs, ASSIGNW_VARREF                       2
+  Node pairs, BASICDTYPE_RANGE                     5
+  Node pairs, BEGIN_ASSIGNDLY                      1
+  Node pairs, CONCAT_CONCAT                        4
+  Node pairs, CONCAT_REPLICATE                     4
+  Node pairs, CONCAT_SELBIT                        8
+  Node pairs, CONCAT_SELEXTRACT                    4
+  Node pairs, EQ_CONST                             1
+  Node pairs, EQ_PARSEREF                          1
+  Node pairs, MODULE_PORT                          1
+  Node pairs, NETLIST_MODULE                       1
+  Node pairs, NETLIST_TYPETABLE                    1
+  Node pairs, RANGE_CONST                         12
+  Node pairs, REPLICATE_CONCAT                     6
+  Node pairs, REPLICATE_CONST                      6
+  Node pairs, SELBIT_CONST                         8
+  Node pairs, SELBIT_PARSEREF                     10
+  Node pairs, SELEXTRACT_CONST                     8
+  Node pairs, SELEXTRACT_PARSEREF                  4
+  Node pairs, SENITEM_PARSEREF                     1
+  Node pairs, SENTREE_SENITEM                      1
+  Node pairs, TYPETABLE_BASICDTYPE                 1
+  Node pairs, UNPACKARRAYDTYPE_BASICDTYPE          1
+  Node pairs, UNPACKARRAYDTYPE_RANGE               1
+  Node pairs, VAR_BASICDTYPE                       6
+  Node pairs, VAR_CONST                            1
+  Node pairs, VAR_UNPACKARRAYDTYPE                 1
+
+  Var space, non-arrays, bytes                     0          0
+
+  Vars, clock attribute                            0          0
+  Vars, unpacked arrayed                           0          0
